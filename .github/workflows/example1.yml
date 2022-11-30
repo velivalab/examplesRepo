@@ -10,6 +10,9 @@ jobs:
   random:
     name: Generate Random Number
     runs-on: ubuntu-latest
+    
+    outputs:
+      number_2: ${{ env.NUMBER_2 }}
       
     steps:
       - name: Random number1
@@ -37,12 +40,17 @@ jobs:
   display:
     name: Display Random Number
     runs-on: ubuntu-latest
-    
+      
     steps:
+      - name: fetch Random Number 2
+        id: fetch
+        with:
+          number: ${{ random.number_2 }}
+      
       - name: Display Random Number 2
         id: display
-        if: ${{ steps.randomNumber2.NUMBER_2 >= '0' }}
-        run: echo "Random Number is ${{ steps.randomNumber2.NUMBER_2 }}"
+        if: ${{ steps.fetch.number >= '0' }}
+        run: echo "Random Number is ${{ steps.fetch.number }}"
         shell: bash
     
     
