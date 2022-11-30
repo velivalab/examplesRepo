@@ -1,0 +1,22 @@
+name: example1
+
+on:
+  push:
+  workflow_dispatch:
+  
+
+jobs:
+  random:
+    name: Generate Random Number
+    runs-on: ubuntu-latest
+    
+    steps:
+      - id: Random number
+        run: echo "RANDOM_NUMBER=$((RANDOM%2))" >> $GITHUB_ENV
+        shell: bash
+        
+      - if: env.RANDOM_NUMBER == '0'
+        name: Cancelling
+        run: echo " $ {{ env.RANDOM_NUMBER }}"
+        shell: bash
+        
