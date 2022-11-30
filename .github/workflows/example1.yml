@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - id: Random number
+      - name: Random number
+        id: randomNumber
         run: echo "RANDOM_NUMBER=$((RANDOM%2))" >> $GITHUB_ENV
         shell: bash
         
-      - if: env.RANDOM_NUMBER == '0'
-        name: Cancelling
+      - name: Cancelling
+        id: cancel
+        if: env.RANDOM_NUMBER == '0'
         run: echo " $ {{ env.RANDOM_NUMBER }}"
         shell: bash
         
