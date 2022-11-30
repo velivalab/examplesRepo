@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Random number1
         id: randomNumber1
-        run: echo "NUMBER_1=$((RANDOM%2))" >> $GITHUB_ENV
+        run: echo "NUMBER_1=$((RANDOM))" >> $GITHUB_ENV
         shell: bash
        
       - name: Random number2
@@ -33,4 +33,17 @@ jobs:
         if: env.NUMBER_2 >= '0'
         run: echo "Random Number is ${{ env.NUMBER_2 }}"
         shell: bash
+        
+  display:
+    name: Display Random Number
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Display Random Number 2
+        id: display
+        if: env.NUMBER_2 >= '0'
+        run: echo "Random Number is ${{ env.NUMBER_2 }}"
+        shell: bash
+    
+    
         
