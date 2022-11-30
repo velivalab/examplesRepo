@@ -14,23 +14,23 @@ jobs:
     steps:
       - name: Random number1
         id: randomNumber1
-        run: echo "RANDOM_NUMBER1=$((RANDOM%2))" >> $GITHUB_ENV
+        run: echo "NUMBER_1=$((RANDOM%2))" >> $GITHUB_ENV
         shell: bash
        
       - name: Random number2
         id: randomNumber2
-        run: echo "RANDOM_NUMBER2=$((RANDOM))" >> $GITHUB_ENV
+        run: echo "NUMBER_2=$((RANDOM))" >> $GITHUB_ENV
         shell: bash
         
       - name: Cancelling
         id: cancel
-        if: env.RANDOM_NUMBER1 >= '0'
-        run: echo "Cancelling ${{ env.RANDOM_NUMBER }}"
+        if: env.NUMBER_1 >= '0'
+        run: echo "Cancelling ${{ env.NUMBER_1 }}"
         shell: bash
         
       - name: Print Random Number
         id: print
-        if: env.RANDOM_NUMBER2 >= '0'
-        run: echo "Random Number is ${{ env.RANDOM_NUMBER }}"
+        if: env.NUMBER_2 >= '0'
+        run: echo "Random Number is ${{ env.NUMBER_2 }}"
         shell: bash
         
