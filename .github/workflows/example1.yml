@@ -44,6 +44,7 @@ jobs:
     steps:
       - name: fetch Random Number 2
         id: fetch
+        uses: actions/checkout@master
         with:
           number: ${{ random.number_2 }}
       
