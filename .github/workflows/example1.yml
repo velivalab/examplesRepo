@@ -2,6 +2,7 @@ name: example1
 
 on:
   push:
+    branches: [ master ]
   workflow_dispatch:
   
 
@@ -11,14 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Random number
-        id: randomNumber
-        run: echo "RANDOM_NUMBER=$((RANDOM%2))" >> $GITHUB_ENV
+      - name: Random number1
+        id: randomNumber1
+        run: echo "RANDOM_NUMBER1=$((RANDOM%2))" >> $GITHUB_ENV
+        shell: bash
+       
+      - name: Random number2
+        id: randomNumber2
+        run: echo "RANDOM_NUMBER2=$((RANDOM))" >> $GITHUB_ENV
         shell: bash
         
       - name: Cancelling
         id: cancel
-        if: env.RANDOM_NUMBER >= '0'
-        run: echo "${{ env.RANDOM_NUMBER }}"
+        if: env.RANDOM_NUMBER1 >= '0'
+        run: echo "Cancelling ${{ env.RANDOM_NUMBER }}"
+        shell: bash
+        
+      - name: Print Random Number
+        id: print
+        if: env.RANDOM_NUMBER2 >= '0'
+        run: echo "Random Number is ${{ env.RANDOM_NUMBER }}"
         shell: bash
         
