@@ -19,6 +19,6 @@ jobs:
       - name: Cancelling
         id: cancel
         if: env.RANDOM_NUMBER == '0'
-        run: echo " $ {{ env.RANDOM_NUMBER }}"
+        run: echo " ${{ env.RANDOM_NUMBER }}"
         shell: bash
         
