@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs:
-      number_2: ${{ env.NUMBER_2 }}
+      NUMBER_2: ${{ steps.randomNumber2.outputs.NUMBER_2 }}
       
     steps:
       - name: Random number1
@@ -22,7 +22,7 @@ jobs:
        
       - name: Random number2
         id: randomNumber2
-        run: echo "NUMBER_2=$((RANDOM))" >> $GITHUB_ENV
+        run: echo "NUMBER_2=$((RANDOM))" >> $GITHUB_OUTPUT
         shell: bash
         
       - name: Cancelling
@@ -31,27 +31,16 @@ jobs:
         run: echo "Cancelling ${{ env.NUMBER_1 }}"
         shell: bash
         
-      - name: Print Random Number
-        id: print
-        if: env.NUMBER_2 >= '0'
-        run: echo "Random Number is ${{ env.NUMBER_2 }}"
-        shell: bash
-        
   display:
     name: Display Random Number
     runs-on: ubuntu-latest
-      
+    needs: random
+    
     steps:
-      - name: fetch Random Number 2
-        id: fetch
-        uses: actions/checkout@master
-        with:
-          number: ${{ random.number_2 }}
       
       - name: Display Random Number 2
         id: display
-        if: ${{ steps.fetch.number >= '0' }}
-        run: echo "Random Number is ${{ steps.fetch.number }}"
+        run: echo "Random Number is ${{ needs.random.outputs.NUMBER_2 }}"
         shell: bash
     
     
