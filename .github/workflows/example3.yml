@@ -7,6 +7,9 @@ jobs:
   getrepowh:
     runs-on: ubuntu-latest
     steps:
+      - name: install npm packages
+        run: npm i axios
+        
       - uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GH_TOKEN }}
