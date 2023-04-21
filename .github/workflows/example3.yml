@@ -7,8 +7,11 @@ jobs:
   getrepowh:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          const axios = require('axios');
-          const result = await axios.get('https://api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779');
-          const text = result.data;
-          console.log('echo output: '+text)
+      - uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const axios = require("axios");
+            const result = await axios.get(`https://api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779`);
+            const text = result.data;
+            console.log(`echo output: `+text)
