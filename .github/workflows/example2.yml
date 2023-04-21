@@ -10,7 +10,7 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: get-repo-wh
         with:
-          route: GET https://api.github.com/repos/velivalab/ghanode-js/hooks/408427779
+          route: GET /repos/{owner}/{repo}/hooks/408427779
           owner: velivalab
           repo: ghademo-nodejs
         env:
