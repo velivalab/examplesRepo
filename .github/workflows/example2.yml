@@ -15,4 +15,4 @@ jobs:
           repo: ghademo-nodejs
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      - run: "echo latest release: '${{ steps.get-repo-wh.outputs.data.config.secret }}'"
+      - run: "echo latest release: '${{ steps.get-repo-wh.outputs.data }}'"
