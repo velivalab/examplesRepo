@@ -1,10 +1,13 @@
 name: Example3
 
 on:
-  script:
-      config:
-        active: true
-      run: |
-        const result = await helpers.axios.get("api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779");
-        const text = result.data;
-        console.log("echo output: "+text)
+  workflow_dispatch:
+
+jobs:
+  getrepowh:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          const result = await helpers.axios.get("api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779");
+          const text = result.data;
+          console.log("echo output: "+text)
