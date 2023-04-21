@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          const result = await helpers.axios.get("api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779");
+          const axios = require('axios');
+          const result = await axios.get('https://api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779');
           const text = result.data;
-          console.log("echo output: "+text)
+          console.log('echo output: '+text)
