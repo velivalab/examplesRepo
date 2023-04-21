@@ -16,5 +16,5 @@ jobs:
           script: |
             const axios = require("axios");
             const result = (await axios.get(`api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779`, {
-              headers: { Authorization: `Bearer ${{ secrets.GITHUB_TOKEN }}` }})).data;
+              headers: { Authorization: `Bearer ${{ secrets.GH_TOKEN }}` }})).data;
             console.log(`echo output: `+result)
