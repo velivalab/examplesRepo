@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: display repo variables
-        run: npm i axios
+        run: echo repo variable ${{ vars.SN_DEVOPS_TOKEN }}
+        
+      - name: display repo secrets
+        run: echo repo secrets ${{ secrets.SN_SESSION_TOKEN }}
         
       - name: install npm packages
-        run: echo repo variable ${{ vars.SN_DEVOPS_TOKEN }}
+        run: npm i axios       
         
       - uses: actions/github-script@v4
         with:
