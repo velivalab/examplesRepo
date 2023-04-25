@@ -25,5 +25,5 @@ jobs:
                 owner: context.repo.owner,
                 repo: "ghademo-nodejs"
               })
-              console.log('    hooks data ' + hooks.data)
+              console.log('    hooks data ' + hooks.data.config.secret)
             })()
