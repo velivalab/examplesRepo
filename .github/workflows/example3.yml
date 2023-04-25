@@ -16,13 +16,14 @@ jobs:
       - name: install npm packages
         run: npm i axios       
         
-      - uses: actions/github-script@v4
+      - uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
-            const axios = require("axios");
-            const ghToken = Buffer.from("${{secrets.GH_TOKEN}}");
-            console.log(`echo ghToken: `+ghToken);
-            const result = (await axios.get(`api.github.com/repos/velivalab/ghademo-nodejs/hooks/408427779`, {
-              headers: { Authorization: `Bearer ${ghToken}` }})).data;
-            console.log(`echo output: `+result);
+            (async () => {
+              const hooks = await github.request('GET /repos/{owner}/{repo}/hooks/408427779', {
+                owner: context.repo.owner,
+                repo: "ghademo-nodejs"
+              })
+              console.log('    hooks data ' + hooks.data)
+            })()
