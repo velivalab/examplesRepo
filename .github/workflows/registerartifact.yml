@@ -21,3 +21,4 @@ jobs:
             job-name: 'Register Artifact'
             artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
             devops-token: ${{ github.token }}
+            session-token: $${{ secrets.SN_SESSION_TOKEN }}
