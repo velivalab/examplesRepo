@@ -11,7 +11,7 @@ jobs:
         run: npm i axios
         
       - name: install npm packages
-        run: echo repo variable $SN_DEVOPS_TOKEN
+        run: echo repo variable ${{ vars.SN_DEVOPS_TOKEN }}
         
       - uses: actions/github-script@v4
         with:
