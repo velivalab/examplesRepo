@@ -7,8 +7,11 @@ jobs:
   getrepowh:
     runs-on: ubuntu-latest
     steps:
-      - name: install npm packages
+      - name: display repo variables
         run: npm i axios
+        
+      - name: install npm packages
+        run: echo repo variable $SN_DEVOPS_TOKEN
         
       - uses: actions/github-script@v4
         with:
