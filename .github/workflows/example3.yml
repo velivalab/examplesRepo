@@ -11,7 +11,7 @@ jobs:
         run: echo repo variable ${{ vars.SN_DEVOPS_TOKEN }}
         
       - name: display repo secrets
-        run: echo repo secrets ${{ secrets.SN_SESSION_TOKEN }}
+        run: echo repo secrets ${{ secrets.GH_TOKEN }}
         
       - name: install npm packages
         run: npm i axios       
