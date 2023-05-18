@@ -1,9 +1,7 @@
 name: dg_demo_1
 
-
 on:
   workflow_dispatch:
-
 
 jobs:
   change:
@@ -23,7 +21,6 @@ jobs:
           interval: '100'
           timeout: '3600'
           deployment-gate: '{"environment":"dgate","jobName":"Deploy"}'
-
 
   deploy:
     name: Deploy
